@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "jest --coverage"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +15,14 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "jest": "^30.0.2",
+    "supertest": "^7.1.1"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "index.js"
+    ]
   }
 }
