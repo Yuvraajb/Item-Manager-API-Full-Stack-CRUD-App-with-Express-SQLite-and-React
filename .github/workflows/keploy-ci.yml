@@ -32,8 +32,6 @@ jobs:
         run: |
           export KEPLOY_PATH=$(find $HOME -type f -name keploy | xargs dirname)
           echo "$KEPLOY_PATH" >> $GITHUB_PATH
-
       - name: Run Keploy tests
-        run: |
-          cd backend
-          keploy test -c "npm start" --delay 5
+        run: cd backend && $HOME/.keploy/bin/keploy test
+
