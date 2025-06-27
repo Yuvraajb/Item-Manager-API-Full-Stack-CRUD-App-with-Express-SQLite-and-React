@@ -1,6 +1,12 @@
+# .github/workflows/keploy-ci.yml
+
 name: Keploy API Tests
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   keploy-test:
@@ -16,26 +22,17 @@ jobs:
           node-version: '18'
 
       - name: Clean install dependencies
-        run: |
-          cd backend
-          rm -rf node_modules package-lock.json
-          npm install
+        run: cd backend && npm ci
 
-      - name: Install Keploy CLI
+      - name: Install Keploy CLI (manual, reliable)
         run: |
-          curl -s https://keploy.io/install.sh | bash
-      - name: Print HOME
-        run: echo $HOME
-      - name: List $HOME/.keploy/bin
-        run: ls -l $HOME/.keploy/bin || echo "No such directory"
+          mkdir -p $HOME/.keploy/bin
+          curl -L https://github.com/keploy/keploy/releases/latest/download/keploy-linux-amd64 -o $HOME/.keploy/bin/keploy
+          chmod +x $HOME/.keploy/bin/keploy
+          echo "$HOME/.keploy/bin" >> $GITHUB_PATH
 
-      - name: Find Keploy binary
-        run: find $HOME -type f -name keploy || true
+      - name: Check Keploy version
+        run: keploy version
 
-      - name: Add Keploy to PATH
-        run: |
-          export KEPLOY_PATH=$(find $HOME -type f -name keploy | xargs dirname)
-          echo "$KEPLOY_PATH" >> $GITHUB_PATH
       - name: Run Keploy tests
-        run: cd backend && $HOME/.keploy/bin/keploy test
-
+        run: cd backend && keploy test
