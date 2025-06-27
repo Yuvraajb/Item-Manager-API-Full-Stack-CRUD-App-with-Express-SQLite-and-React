@@ -1,5 +1,3 @@
-# .github/workflows/keploy-ci.yml
-
 name: Keploy API Tests
 
 on: [push, pull_request]
@@ -11,8 +9,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          submodules: false
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -27,11 +23,13 @@ jobs:
 
       - name: Install Keploy CLI
         run: |
-          curl -s https://keploy.io/install.sh | bash
-          echo "$HOME/.keploy/bin" >> $GITHUB_PATH
+          curl -s https://keploy.io/install.sh | bash -x
+          find $HOME -type f -name keploy
 
-      - name: List Keploy bin directory
-        run: ls -l $HOME/.keploy/bin
+      - name: Add Keploy to PATH
+        run: |
+          export KEPLOY_PATH=$(find $HOME -type f -name keploy | xargs dirname)
+          echo "$KEPLOY_PATH" >> $GITHUB_PATH
 
       - name: Check Keploy version
         run: keploy version
