@@ -34,7 +34,7 @@ jobs:
           echo "$HOME/.keploy/bin" >> $GITHUB_PATH
 
       - name: Check Keploy version
-        run: keploy version
+        run: keploy --version
 
       - name: Run Keploy tests
         run: cd backend && keploy test
