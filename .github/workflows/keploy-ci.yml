@@ -1,4 +1,5 @@
 # .github/workflows/keploy-ci.yml
+
 name: Keploy API Tests
 
 on: [push, pull_request]
@@ -6,18 +7,22 @@ on: [push, pull_request]
 jobs:
   keploy-test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          submodules: false  # Set to true only if you use submodules
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: Install dependencies
+      - name: Clean install dependencies
         run: |
           cd backend
+          rm -rf node_modules package-lock.json
           npm install
 
       - name: Start API server
@@ -26,12 +31,12 @@ jobs:
           nohup npm start &
           sleep 5
 
-      - name: Install Keploy
+      - name: Install Keploy CLI
         run: |
-          curl -L "https://github.com/keploy/keploy/releases/latest/download/keploy-linux-amd64" -o keploy
-          chmod +x keploy
-          sudo mv keploy /usr/local/bin/keploy
+          curl -s https://keploy.io/install.sh | bash
 
+      - name: Check Keploy version
+        run: keploy version
 
       - name: Run Keploy tests
         run: |
