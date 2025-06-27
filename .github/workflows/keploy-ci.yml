@@ -34,11 +34,16 @@ jobs:
       - name: Install Keploy CLI
         run: |
           curl -s https://keploy.io/install.sh | bash
+          echo "$HOME/.keploy/bin" >> $GITHUB_PATH
+          export PATH="$HOME/.keploy/bin:$PATH"
 
       - name: Check Keploy version
-        run: keploy version
+        run: |
+          export PATH="$HOME/.keploy/bin:$PATH"
+          keploy version
 
       - name: Run Keploy tests
         run: |
           cd backend
+          export PATH="$HOME/.keploy/bin:$PATH"
           keploy test -c "npm start" --delay 5
