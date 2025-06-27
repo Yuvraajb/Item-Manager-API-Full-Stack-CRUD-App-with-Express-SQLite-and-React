@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          submodules: false  # Set to true only if you use submodules
+          submodules: false
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -29,6 +29,9 @@ jobs:
         run: |
           curl -s https://keploy.io/install.sh | bash
           echo "$HOME/.keploy/bin" >> $GITHUB_PATH
+
+      - name: List Keploy bin directory
+        run: ls -l $HOME/.keploy/bin
 
       - name: Check Keploy version
         run: keploy version
