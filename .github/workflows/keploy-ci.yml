@@ -24,6 +24,10 @@ jobs:
       - name: Install Keploy CLI
         run: |
           curl -s https://keploy.io/install.sh | bash
+      - name: Print HOME
+        run: echo $HOME
+      - name: List $HOME/.keploy/bin
+        run: ls -l $HOME/.keploy/bin || echo "No such directory"
 
       - name: Find Keploy binary
         run: find $HOME -type f -name keploy || true
