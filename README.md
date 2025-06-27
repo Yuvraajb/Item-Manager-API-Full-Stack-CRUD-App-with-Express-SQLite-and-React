@@ -154,9 +154,6 @@ Below are screenshots demonstrating the workflow runs and Keploy test reports, a
 PM" src="https://github.com/user-attachments/assets/3c552f69-288f-4be8-a9fb-cfa3511ed5e3" />
 
 
-
-> _Add your actual screenshot files to a `/screenshots` directory in the repo and update the filenames above if necessary._
-
 ---
 
 ## Fellowship Submission
