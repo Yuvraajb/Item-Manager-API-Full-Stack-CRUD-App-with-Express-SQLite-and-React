@@ -27,7 +27,7 @@ jobs:
       - name: Install Keploy CLI (manual, reliable)
         run: |
           mkdir -p $HOME/.keploy/bin
-          curl -L https://github.com/keploy/keploy/releases/latest/download/keploy-linux-amd64 -o $HOME/.keploy/bin/keploy
+          curl -L https://github.com/keploy/keploy/releases/download/v2.6.14/keploy_linux_amd64.tar.gz -o $HOME/.keploy/bin/keploy
           chmod +x $HOME/.keploy/bin/keploy
           echo "$HOME/.keploy/bin" >> $GITHUB_PATH
 
