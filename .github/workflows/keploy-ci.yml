@@ -25,25 +25,16 @@ jobs:
           rm -rf node_modules package-lock.json
           npm install
 
-      - name: Start API server
-        run: |
-          cd backend
-          nohup npm start &
-          sleep 5
-
       - name: Install Keploy CLI
         run: |
           curl -s https://keploy.io/install.sh | bash
           echo "$HOME/.keploy/bin" >> $GITHUB_PATH
-          export PATH="$HOME/.keploy/bin:$PATH"
 
       - name: Check Keploy version
         run: |
-          export PATH="$HOME/.keploy/bin:$PATH"
           keploy version
 
       - name: Run Keploy tests
         run: |
           cd backend
-          export PATH="$HOME/.keploy/bin:$PATH"
           keploy test -c "npm start" --delay 5
