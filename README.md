@@ -144,11 +144,16 @@ Below are screenshots demonstrating the workflow runs and Keploy test reports, a
 
 ### 1. GitHub Actions Workflow Run
 
-![GitHub Actions Workflow Run](screenshots/workflow-run.png)
+<img width="1224" alt="Screenshot 2025-06-27 at 10 05 16 PM" src="https://github.com/user-attachments/assets/3a38b652-8f5c-4361-9148-96240cb6331f" />
+
 
 ### 2. Keploy Test Report
+<img width="1237" alt="Screenshot 2025-06-27 at 10 02 43 PM" src="https://github.com/user-attachments/assets/764a72a5-45c0-45b2-8ba9-e3eecf91d512" />
+<img width="1226" alt="Screenshot 2025-06-27 at 10 02 36 PM" src="https://github.com/user-attachments/assets/34f61df8-1577-4394-bb55-814f064123d1" />
+<img width="1229" alt="Screenshot 2025-06-27 at 10 02 02 <img width="1083" alt="Screenshot 2025-06-27 at 10 02 17 PM" src="https://github.com/user-attachments/assets/597a935c-08d8-4419-9a8e-2d8a318b46e2" />
+PM" src="https://github.com/user-attachments/assets/3c552f69-288f-4be8-a9fb-cfa3511ed5e3" />
 
-![Keploy Test Report](screenshots/keploy-test-report.png)
+
 
 > _Add your actual screenshot files to a `/screenshots` directory in the repo and update the filenames above if necessary._
 
